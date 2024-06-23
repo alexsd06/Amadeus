@@ -1,3 +1,4 @@
 discord.py
 python-dotenv
+wheel
 git+https://github.com/kramcat/CharacterAI.git
