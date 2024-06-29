@@ -33,15 +33,16 @@ async def test(ctx):
 
 @bot.command()
 async def amadeus(ctx, *args):
-	string=" ".join(args)
-	print (f"User: {string}")
-	async with await client.connect() as chat:
-		chat_data=await client.get_chat(amadeus_id)
-		message = await chat.send_message(
-			amadeus_id, chat_data.chat_id, string
-		)
-		print(f"Amadeus: {message.text}")  # message.name
-		await ctx.send(message.text)
+	async with ctx.typing():
+		string=" ".join(args)
+		print (f"User: {string}")
+		async with await client.connect() as chat:
+			chat_data=await client.get_chat(amadeus_id)
+			message = await chat.send_message(
+				amadeus_id, chat_data.chat_id, string
+			)
+			print(f"Amadeus: {message.text}")  # message.name
+			await ctx.send(message.text)
 
 @bot.command()
 async def reset(ctx):
